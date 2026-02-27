@@ -1,0 +1,307 @@
+\documentclass[polish]{beamer}
+
+% --- Pakiety -------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath, mathtools, amssymb}
+\usefonttheme{professionalfonts} % Włącza oryginalne fonty LaTeXa w matematyce
+\usepackage{xcolor} % Pakiet do definiowania kolorów
+\definecolor{bordowy}{RGB}{180, 0, 0} % Bordowy w modelu RGB
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{lipsum}
+
+% --- Użyteczne ustawienia -------------------------------------------
+
+\usetheme{Berkeley}
+\usecolortheme{beaver}
+
+\setbeamertemplate{navigation symbols}{} 
+
+\setbeamercolor{block title}{bg=gray!40, fg=bordowy} % Czerwony tytuł z białym tekstem
+\setbeamercolor{block body}{bg=gray!15,fg=black} % Szare tło treści z czarnym tekstem
+
+% --- Ustawienia bibliografii ----------------------------------------
+
+  \setbeamertemplate{bibliography item}[text]
+  \setbeamercolor*{bibliography entry author}{parent=black}
+  \setbeamercolor*{bibliography entry location}{parent=black}
+  \setbeamercolor*{bibliography item}{parent=black}
+  \setbeamercolor*{bibliography entry note}{parent=black}
+
+
+% --- SIDEBAR --------------------------------------------------------
+\makeatletter
+\setbeamertemplate{sidebar left}{
+  \insertverticalnavigation{\beamer@sidebarwidth}%
+  \vfill
+}
+\makeatother
+
+
+% --- PRZESUNIECIE DLA STRONY TYTULOWEJ -----------------------------
+\makeatletter
+\newlength{\szerokoscSlide}
+\setlength{\szerokoscSlide}{\paperwidth}
+\addtolength{\szerokoscSlide}{-2cm} % Zmniejszamy o 2cm, zeby box z tytułem
+% nie zajmowal calej szerokosci
+\newcommand{\startodkrawedzi}{
+  \hspace*{-\beamer@sidebarwidth}% Cofnij o szerokość paska bocznego
+  \hspace*{-\beamer@leftmargin}% Cofnij o domyślny margines tekstu
+}
+\makeatother
+
+
+% --- Dolny pasek ----------------------------------------------------
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+      \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.1ex,right]{author in head/foot}%
+      \insertshortauthor\hspace{1.2em}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.43\paperwidth,ht=2.5ex,dp=1.1ex,left]{title in head/foot}%
+      \hspace{1.2em}\insertshorttitle
+    \end{beamercolorbox}%
+  }%
+  \begin{beamercolorbox}[wd=.07\paperwidth,ht=2.5ex,dp=1.1ex,center]{date in head/foot}%
+\insertframenumber/\inserttotalframenumber
+\end{beamercolorbox}%
+  \vskip0pt%
+}
+
+% --- KOLORY sidebara -----------------------------------------------
+\setbeamercolor{sidebar canvas}{bg=gray!15}
+\setbeamercolor{section in sidebar}{fg=bordowy,bg=gray!15}
+\setbeamercolor{section in sidebar shaded}{fg=black!45,bg=gray!15}
+\setbeamercolor{subsection in sidebar}{fg=bordowy,bg=gray!15}
+\setbeamercolor{subsection in sidebar shaded}{fg=black!45,bg=gray!15}
+
+% --- Wygląd numeracji w spisie treści ------------------------------
+\setbeamertemplate{section in toc}{%
+  {\color{bordowy}\large$\bullet$}\hspace{0.6em}\inserttocsection\par
+}
+\setbeamertemplate{subsection in toc}{%
+{\hspace{1em}\color{bordowy}\large$\bullet$}\hspace{0.6em}\inserttocsubsection\par
+}
+
+
+% --- Dane do prezentacji -------------------------------------------
+
+\title[Tytuł do stopki]{Tytuł prezentacji}
+\author[Autor do stopki]{Autor prezentacji}
+\institute{Seminarium Koła Naukowego Data Science}
+\date[2026]{2026}
+\logo{\includegraphics[height=1cm]{Graphics/KNDS_logo_bez_napisu.png}}
+
+% --- Slajdy --------------------------------------------------------
+
+\begin{document}
+
+% Slajd tytułowy - nie zmieniać
+\begin{frame}[plain]
+  \startodkrawedzi
+  \hspace{1cm} % Lewy margines
+  \begin{minipage}[c][\textheight]{\szerokoscSlide}
+    \centering
+    \titlepage
+    \vspace{-1cm} 
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/KNDS_logo_pełne.png}
+      \hspace{2em}
+      \includegraphics[width=0.45\textwidth]{Graphics/politechnika.png}
+    \end{figure}
+  \end{minipage}
+\end{frame}
+
+% Spis treści 
+\begin{frame}
+\frametitle{Spis treści}
+\tableofcontents
+\end{frame}
+
+% Slajdy warto dzielić na sekcje (section) i podsekcje (subsection).
+\section{Merytoryka}
+
+\subsection{Przedstawianie Danych}
+
+\begin{frame}{Bloki tekstu}
+  \begin{block}{Podstawowy}
+    \begin{itemize}
+      \item Dane: wczytane
+      \item Model: wytrenowany
+      \item Wynik: OK
+    \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{Negatywny}
+    \begin{itemize}
+      \item Braki w danych
+      \item Możliwy bias
+    \end{itemize}
+  \end{alertblock}
+
+  \begin{exampleblock}{Pozytywny}
+    Elektryka prąd nie tyka.
+  \end{exampleblock}
+\end{frame}
+
+% SLAJD 4: Obrazki
+\begin{frame}{Slajd z grafiką}
+Treść slajdu można umieszczać nad grafiką.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Graphics/KNDS_logo_pełne.png}
+    \caption{\small Logo Koła Naukowego Data Science}
+  \end{figure}
+Także pod grafiką.
+
+Więcej informacji o tym jak umieszczać grafiki można znaleźć pod linkiem \href{https://www.overleaf.com/learn/latex/Positioning_images_and_tables}{w tych słowach}.
+\end{frame}
+
+% SLIDE 5: Układ kolumnowy
+\begin{frame}{Analiza wyników (Tekst + Grafika)}
+    \begin{columns}[T] % T = wyrównanie do góry (top)
+        
+        % --- PIERWSZA KOLUMNA (Tekst) ---
+        \begin{column}{0.5\textwidth}
+            \textbf{Wnioski:}
+            \begin{itemize}
+                \item Model uczy się stabilnie.
+                \item Overfitting po 50 epoce.
+                \item \alert{Wymagana regularyzacja!}
+            \end{itemize}
+            
+            \vspace{1em}
+            To jest przykładowy tekst, który opisuje wykres po prawej stronie.
+        \end{column}
+        
+        % --- DRUGA KOLUMNA (Grafika) ---
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=0.9\textwidth]{Graphics/KNDS_logo_pełne.png}
+            
+            \vspace{0.5em}
+            \footnotesize{Rys 1. Wizualizacja (tutaj wstaw wykres)}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+% SLAJD 6: Tabele
+\begin{frame}{Tabele}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{lcrc} % wyrównanie w kolumnie: left, center, right
+      Metryka & Model A & Model B & Model C \\
+      Accuracy & 0.81 & 0.79 & 0.83 \\
+      F1-score & 0.76 & 0.74 & 0.78 \\
+      Czas (s) & 12.3 & 9.8 & 14.1 \\
+    \end{tabular}
+    \caption{\small bez ramki.}
+  \end{table}
+
+    \begin{table}
+    \centering
+    \small
+    \begin{tabular}{|c||c|c|c|}
+      \hline
+      Metryka & Model A & Model B & Model C \\
+      \hline
+      Accuracy & 0.81 & 0.79 & 0.83 \\
+      F1-score & 0.76 & 0.74 & 0.78 \\
+      Czas (s) & 12.3 & 9.8 & 14.1 \\
+      \hline
+    \end{tabular}
+    \caption{\small z ramką.}
+  \end{table}
+\end{frame}
+
+% SLAJD 7: Odrobina matematyki
+\subsection{Dalsze przykłady}
+\begin{frame}{Matematyka}
+  % Są predefiniowane bloki na definicje, twierdzenia, przykłady...
+  \begin{definition}
+  \textit{Błędem średniokwadratowym} estymatora $\hat{\theta}$ parametru $\theta$ nazywamy wielkość
+  $$\operatorname{MSE} ({\hat {\theta }})= \mathbb{E} [({\hat {\theta }}-\theta )^{2}].$$
+  \end{definition}
+  
+  % Można też po prostu wstawić blok z nazwą.
+  \begin{block}{Wzorek}
+    \[
+      \hat{\theta} = \arg\min_{\theta} \sum_{i=1}^{n} \ell\big(y_i, f_{\theta}(x_i)\big)
+    \]
+  \end{block}
+  
+% linijka matematycznych wzorów na kilka sposobów:
+  $$ 2 \cdot 2 = 4 $$
+  \[ 2 + 2 = 4 \]
+ \begin{equation}
+     2^2 = 4
+ \end{equation}
+  \begin{equation*}
+     2 - (-2) = 4
+ \end{equation*}
+\end{frame}
+
+% SLAJD 8: Pseudokody
+\begin{frame}{Pseudokody}
+    \small
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \KwResult{Wybrane cechy $F$}
+        inicjalizacja $F = \emptyset$\;
+        \While{nie spełniono kryterium stopu}{
+            oblicz $score$ dla każdej cechy\;
+            dodaj najlepszą cechę do $F$\;
+        }
+        \caption{Forward Selection}
+    \end{algorithm}
+\end{frame}
+
+\subsection{Cytowania}
+\begin{frame}{Przykłady cytowania}
+  \lipsum[20]
+  
+  \vspace{1em}
+  
+  Cytowanie artykułu \cite{nowak2025}. 
+  Cytowanie strony \cite{FacebookKNDS}.
+  
+  \vspace{1em}
+  
+  \textbf{Przypisy dolne:}
+  Można też zrobić cytowanie na dole strony używając komendy footnote\footnote{J. Nowak, \textit{Wstęp do DS}, 2025.}.
+\end{frame}
+
+% --- BIBLIOGRAFIA ---------------------------------------
+\section{Źródła}
+\begin{frame}{Bibliografia}
+  \begin{thebibliography}{9}
+  
+    % Artykuł / Książka
+    \bibitem{nowak2025}
+    Jan Nowak,
+    \textit{Wprowadzenie do Data Science},
+    Wydawnictwo PW, Warszawa 2025.
+
+    % Strona WWW
+    \bibitem{FacebookKNDS}
+    Koło Naukowe Data Science,
+    \textit{Strona oficjalna},
+    \url{https://www.facebook.com/kolonaukowedatascience}, dostęp: 17.02.2026.
+    
+    % Inne źródło
+    \bibitem{inne}
+    Anna Kowalska,
+    \textit{Analiza danych w Pythonie},
+    Journal of AI, 2024.
+  \end{thebibliography}
+\end{frame}
+
+
+
+
+\end{document}
