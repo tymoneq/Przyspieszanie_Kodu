@@ -287,14 +287,22 @@ Liniowe struktury danych są szybsze, ponieważ wykorzystują cache.
 
 % SLAJD 11
 \section{Pisanie dobrych ifów}
-\subsection{ Branch Predictor}
+\subsection{Branch Predictor}
 \begin{frame}{Branch Predictor}
   Zastanówmy się co się dzieje, gdy nasz program musi wykonać ifa.
+
+  \begin{block}{Wyobraźmy sobie, że nasz program jest obsługiwany przez małe roboty}
+    \begin{itemize}
+      \item Robota, który sprawdza nasz warunek
+      \item Robota, który próbuje przewidzeć jaka będzie kolejna instukcja po ifie
+    \end{itemize}
+  \end{block}
+
 \end{frame}
 
 %Slajd 12
 
-\subsection{ Upraszczanie ifów}
+\subsection{Upraszczanie ifów}
 \begin{frame}{Wykorzystanie branch prediction}
 
   \small
@@ -321,7 +329,6 @@ Liniowe struktury danych są szybsze, ponieważ wykorzystują cache.
 
 
 % Slajd 13
-\subsection{ Upraszczanie ifów}
 \begin{frame}{Wykorzystanie branch prediction c.d}
 
   \small
@@ -361,28 +368,9 @@ Zastanówmy się czy kolejność wyrażeń w ifie ma znaczenie?
 
 
 % --- BIBLIOGRAFIA ---------------------------------------
-\section{Źródła}
-\begin{frame}{Bibliografia}
-  \begin{thebibliography}{9}
-  
-    % Artykuł / Książka
-    \bibitem{nowak2025}
-    Jan Nowak,
-    \textit{Wprowadzenie do Data Science},
-    Wydawnictwo PW, Warszawa 2025.
-
-    % Strona WWW
-    \bibitem{FacebookKNDS}
-    Koło Naukowe Data Science,
-    \textit{Strona oficjalna},
-    \url{https://www.facebook.com/kolonaukowedatascience}, dostęp: 17.02.2026.
-    
-    % Inne źródło
-    \bibitem{inne}
-    Anna Kowalska,
-    \textit{Analiza danych w Pythonie},
-    Journal of AI, 2024.
-  \end{thebibliography}
+\section{Koniec}
+\begin{frame}{Koniec}
+  Dziękuje za uwagę
 \end{frame}
 
 \end{document}
